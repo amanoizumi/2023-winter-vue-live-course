@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router';
 import axios from 'axios';
 
 const router = useRouter();
-const email = ref('a0918233246@hotmail.com');
+const email = ref('');
 const password = ref('');
 
 const loginBtnDisabled = ref(false);
@@ -23,8 +23,7 @@ const login = () => {
     .then((res) => {
       const { token, expired } = res.data;
       document.cookie = `hexToken=${token};expires=${new Date(expired)}; path=/`;
-
-      router.push('/admin/products');
+      router.push('/admin');
     })
     .catch((err) => {
       alert(err.data.message);
