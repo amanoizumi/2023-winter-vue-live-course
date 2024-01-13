@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router';
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -6,17 +6,33 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: () => import('../views/HomeView.vue')
+      component: () => import('../views/HomeView.vue'),
+      children: [
+        {
+          path: '',
+          name: 'login',
+          component: () => import('../views/front/LoginView.vue')
+        }
+      ]
     },
     {
-      path: '/about',
+      path: '/admin',
       name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
+      component: () => import('../components/admin/layout/AdminLayout.vue'),
+      children: [
+        {
+          path: 'products',
+          name: 'products',
+          component: () => import('../views/admin/ProductsView.vue')
+        }
+      ]
+    },
+    {
+      // 輸入亂碼網址時重新導向到首頁
+      path: '/:pathMatch(.*)*',
+      redirect: '/'
     }
   ]
-})
+});
 
-export default router
+export default router;
