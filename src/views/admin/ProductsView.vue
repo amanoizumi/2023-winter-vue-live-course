@@ -110,9 +110,11 @@ onMounted(() => {
               </div>
             </div>
           </div>
-          <template v-for="image in tempProduct.imagesUrl" :key="image">
-            <img :src="image" alt="" class="images m-2" />
-          </template>
+          <div class="d-flex flex-wrap">
+            <template v-for="image in tempProduct.imagesUrl" :key="image">
+              <img :src="image" alt="" class="mw-100 m-2" />
+            </template>
+          </div>
         </template>
         <p v-else class="text-secondary">請選擇一個商品查看</p>
       </div>
