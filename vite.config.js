@@ -8,6 +8,7 @@ import Vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/2023-winter-vue-live-course/',
   plugins: [
     Vue(),
     Components({
