@@ -23,8 +23,7 @@ const login = () => {
     .then((res) => {
       const { token, expired } = res.data;
       document.cookie = `hexToken=${token};expires=${new Date(expired)}; path=/`;
-
-      router.push('/admin/products');
+      router.push('/admin');
     })
     .catch((err) => {
       alert(err.data.message);
