@@ -1,12 +1,23 @@
 import { fileURLToPath, URL } from 'node:url'
+import Components from 'unplugin-vue-components/vite'
+import Icons from 'unplugin-icons/vite'
+import IconsResolver from 'unplugin-icons/resolver'
 
 import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import Vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    vue(),
+    Vue(),
+    Components({
+      dirs: ['src/components'],
+      resolvers: IconsResolver({
+        prefix: false,
+        enabledCollections: ['heroicons-solid', 'heroicons-outline']
+      })
+    }),
+    Icons()
   ],
   resolve: {
     alias: {
