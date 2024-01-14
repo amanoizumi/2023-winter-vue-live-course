@@ -17,7 +17,7 @@ const router = createRouter({
     },
     {
       path: '/admin',
-      name: 'about',
+      name: 'admin',
       component: () => import('../components/admin/layout/AdminLayout.vue'),
       children: [
         {
